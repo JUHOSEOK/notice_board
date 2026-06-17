@@ -31,33 +31,7 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 
 ## 전체 아키텍처
 
-```mermaid
-flowchart TB
-    U["User Browser"]
-
-    N["Nginx :80<br/>- '/' 요청 -> React 정적 파일<br/>- '/api/**' 요청 -> Spring Boot API"]
-
-    subgraph APP["Application Layer"]
-        direction LR
-
-        F["React Frontend<br/>- 로그인/회원가입<br/>- 게시글 목록/상세/작성<br/>- 댓글<br/>- 검색/태그<br/>- AI 참고 패널"]
-
-        B["Spring Boot Backend :8080<br/>- Spring Security + JWT<br/>- REST Controller<br/>- Service Layer<br/>- JPA Repository<br/>- RAG"]
-    end
-
-    DB["PostgreSQL + pgvector<br/>- users<br/>- posts<br/>- comments<br/>- tags<br/>- post_tags<br/>- vector_store"]
-
-    OAI["OpenAI API<br/>- chat<br/>- embedding"]
-
-    U --> N
-    N --> F
-    N --> B
-
-    B --> DB
-    B --> OAI
-```
-
-
+![전체 아키텍처](docs/screenshots/diagram.png)
 
 ## 3.2. DB 설계
 
@@ -69,8 +43,6 @@ flowchart TB
 | tags | 태그 이름 저장 |
 | post_tags | 게시글과 태그의 N:M 연결 |
 | vector_store | RAG 검색용 게시글 벡터 저장 |
-
-
 
 <img width="841" height="682" alt="스크린샷 2026-06-17 오후 7 57 39" src="https://github.com/user-attachments/assets/136c3889-8bb0-4cda-8b68-0cd218af4ec2" />
 
