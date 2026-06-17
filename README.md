@@ -122,22 +122,22 @@ Nginx는 `/api`를 백엔드로 보내고, 나머지 경로를 React 정적 파�
 
 ### 1. 회원가입
 
-![회원가입 화면 1](docs/screenshots/01-signup-1.png)
-
 
 ![회원가입 화면 2](docs/screenshots/02-signup-2.png)
 
-### 2. 로그인
+![회원가입 화면 1](docs/screenshots/01-signup-1.png)
 
-![로그인 화면 1](docs/screenshots/03-login-1.png)
+### 2. 로그인
 
 ![로그인 화면 2](docs/screenshots/04-login-2.png)
 
+![로그인 화면 1](docs/screenshots/03-login-1.png)
+
 ### 3. 게시글 상세와 댓글
 
-![댓글 화면 1](docs/screenshots/05-comment-1.png)
-
 ![댓글 화면 2](docs/screenshots/06-comment-2.png)
+
+![댓글 화면 1](docs/screenshots/05-comment-1.png)
 
 ### 4. RAG 유사 글 찾기
 
