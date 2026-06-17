@@ -29,27 +29,35 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 | POST | `/api/ai/rag/chat` | 게시판 게시글 기반 RAG Q&A 답변 생성 |
 | POST | `/api/ai/rag/reindex` | 기존 게시글 전체를 다시 벡터 저장소에 인덱싱 |
 
-## 3.1. 전체 아키텍처
+## 전체 아키텍처
 
-```txt
-[React Frontend]
-  - 로그인/회원가입
-  - 게시글/댓글/검색
-  - AI 작성 도우미 패널
-        |
-        v
-[Spring Boot Backend]
-  auth -> user
-  post -> comment -> tag
-  ai.rag -> post_embeddings
-  ai.mcp -> GitHub API
-  ai.agent -> RAG/MCP/tag tools
-        |
-        v
-[PostgreSQL + pgvector]
-  users, posts, comments, tags, post_tags
-  post_embeddings, ai_logs, agent_memory, mcp_tool_logs
+```mermaid
+flowchart TB
+    U["User Browser"]
+
+    N["Nginx :80<br/>- '/' 요청 -> React 정적 파일<br/>- '/api/**' 요청 -> Spring Boot API"]
+
+    subgraph APP["Application Layer"]
+        direction LR
+
+        F["React Frontend<br/>- 로그인/회원가입<br/>- 게시글 목록/상세/작성<br/>- 댓글<br/>- 검색/태그<br/>- AI 참고 패널"]
+
+        B["Spring Boot Backend :8080<br/>- Spring Security + JWT<br/>- REST Controller<br/>- Service Layer<br/>- JPA Repository<br/>- RAG"]
+    end
+
+    DB["PostgreSQL + pgvector<br/>- users<br/>- posts<br/>- comments<br/>- tags<br/>- post_tags<br/>- vector_store"]
+
+    OAI["OpenAI API<br/>- chat<br/>- embedding"]
+
+    U --> N
+    N --> F
+    N --> B
+
+    B --> DB
+    B --> OAI
 ```
+
+
 
 ## 3.2. DB 설계
 
@@ -61,7 +69,7 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 | tags | 태그 이름 저장 |
 | post_tags | 게시글과 태그의 N:M 연결 |
 | vector_store | RAG 검색용 게시글 벡터 저장 |
-| ai_logs | RAG/Agent 실행 기록 |
+
 
 
 <img width="841" height="682" alt="스크린샷 2026-06-17 오후 7 57 39" src="https://github.com/user-attachments/assets/136c3889-8bb0-4cda-8b68-0cd218af4ec2" />
@@ -133,7 +141,7 @@ Nginx는 `/api`를 백엔드로 보내고, 나머지 경로를 React 정적 파�
 
 ![로그인 화면 1](docs/screenshots/03-login-1.png)
 
-### 3. 게시글 상세와 댓글
+### 3. 게시글 상세와 댓글/태그 
 
 ![댓글 화면 2](docs/screenshots/06-comment-2.png)
 
