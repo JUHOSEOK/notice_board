@@ -1,0 +1,68 @@
+# Project-local Codex MCP configuration.
+# This file is loaded only when this repository is trusted by Codex.
+
+# OpenAI official developer docs.
+# Purpose: verify OpenAI API behavior while drawing the project structure
+# that includes OpenAI API integration.
+[mcp_servers.openai_docs]
+url = "https://developers.openai.com/mcp"
+enabled = true
+required = false
+tool_timeout_sec = 120
+default_tools_approval_mode = "auto"
+
+# AWS official managed knowledge server.
+# Purpose: retrieve current AWS docs, architectural references,
+# Well-Architected guidance, CloudFormation/CDK examples, and regional data.
+[mcp_servers.aws_knowledge]
+url = "https://knowledge-mcp.global.api.aws"
+enabled = true
+required = false
+tool_timeout_sec = 120
+default_tools_approval_mode = "auto"
+
+# AWS Labs Infrastructure-as-Code MCP server.
+# Purpose: validate CloudFormation/CDK assumptions and check AWS deployment
+# diagrams against AWS IaC best practices.
+[mcp_servers.aws_iac]
+command = "uvx"
+args = ["awslabs.aws-iac-mcp-server@latest"]
+enabled = true
+required = false
+startup_timeout_sec = 60
+tool_timeout_sec = 180
+env_vars = ["AWS_PROFILE", "AWS_REGION", "AWS_DEFAULT_REGION"]
+default_tools_approval_mode = "prompt"
+
+[mcp_servers.aws_iac.env]
+FASTMCP_LOG_LEVEL = "ERROR"
+
+# AWS Labs Diagram MCP server.
+# Purpose: generate AWS icon-based architecture diagrams as image files
+# through the Python diagrams package and GraphViz.
+[mcp_servers.aws_diagram]
+command = "uvx"
+args = ["awslabs.aws-diagram-mcp-server==1.0.23"]
+enabled = true
+required = false
+startup_timeout_sec = 60
+tool_timeout_sec = 180
+default_tools_approval_mode = "prompt"
+
+[mcp_servers.aws_diagram.env]
+FASTMCP_LOG_LEVEL = "ERROR"
+UV_CACHE_DIR = "/Users/juhoseok/Documents/게시판 만드릭/.uv-cache"
+XDG_DATA_HOME = "/Users/juhoseok/Documents/게시판 만드릭/.uv-data"
+
+# Figma remote MCP server.
+# Purpose: create and edit native Figma/FigJam diagrams, including
+# architecture diagrams and ERDs from prompts, code, or structured inputs.
+# After Codex picks up this config, authenticate with:
+#   codex mcp login figma
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+enabled = true
+required = false
+startup_timeout_sec = 30
+tool_timeout_sec = 180
+default_tools_approval_mode = "prompt"

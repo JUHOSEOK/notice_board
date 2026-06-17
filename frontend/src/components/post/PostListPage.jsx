@@ -501,17 +501,7 @@ export default function PostListPage({ user, setNotice }) {
                         >
                             유사 글
                         </Button>
-                        {showAgent && (
-                            <Button
-                                type="button"
-                                size="sm"
-                                variant="secondary"
-                                disabled={aiState.loading}
-                                onClick={runAgent}
-                            >
-                                작성 보조
-                            </Button>
-                        )}
+
                     </div>
                 </div>
 
@@ -871,14 +861,7 @@ export default function PostListPage({ user, setNotice }) {
                         <Button type="button" variant="secondary" onClick={backToList}>
                             취소
                         </Button>
-                        <Button
-                            type="button"
-                            variant="secondary"
-                            disabled={aiState.loading}
-                            onClick={runAgent}
-                        >
-                            작성 보조
-                        </Button>
+
                     </div>
                 </Card>
 
