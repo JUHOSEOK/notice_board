@@ -4,13 +4,10 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 
 ## 1. 프로젝트 개요
 
-이 프로젝트의 목표는 “복잡한 AI 서비스”가 아니라 제출 가능한 게시판에 AI 응용 기술의 핵심 흐름을 연결하는 것입니다.
+### React, Spring Boot, PostgreSQL, pgvector를 사용해 기본 게시판 기능과 RAG 기반 AI 활용 기능을 결합한 게시판 애플리케이션.
 
 - 기본 게시판: 회원가입/로그인, 게시글 CRUD, 댓글, 태그, 페이징, 검색
 - RAG: 게시글 임베딩 저장, 유사 글 검색, 요약, 출처 링크
-- MCP: JSON-RPC 요청으로 GitHub Public API 호출
-- Agent: 글 초안을 보고 태그 추천, 유사 글 검색, MCP 호출 중 필요한 도구 실행
-- DevOps: Docker Compose, Nginx, EC2 배포 문서, 로그/장애 기록
 
 ## 2. 주요 구현 기능 
 
@@ -51,7 +48,7 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 
 ### RAG
 
-게시글 작성/수정 시 title + content를 Spring AI Document로 변환하고 chunk 단위로 나눈 뒤 VectorStore에 저장합니다. 질문이나 초안이 들어오면 Spring AI VectorStore가 PostgreSQL vector_store에서 cosine distance 기반 유사도 검색을 수행하고, 검색된 게시글을 근거로 요약 답변을 생성합니다
+게시글 작성/수정 시 제목 + 내용 chunk 단위로 나눈 뒤 VectorStore에 저장. 질문이나 초안이 들어오면 Spring AI VectorStore가 PostgreSQL vector_store에서 cosine distance 기반 유사도 검색을 수행, 검색된 게시글을 근거로 요약 답변을 생성.
 
 게시글 저장
  -> title + content를 Spring AI Document로 변환
