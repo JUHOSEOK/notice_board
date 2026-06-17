@@ -1,6 +1,6 @@
 # AI 지식 게시판
 
-React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 게시판입니다. 기본 게시판 기능에 RAG, JSON-RPC 스타일 MCP, 작성 보조 Agent를 최소 범위로 붙였습니다.
+React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 게시판입니다. 기본 게시판 기능에 RAG를 결합한 Ai 지식 게시판.
 
 ## 1. 프로젝트 개요
 
