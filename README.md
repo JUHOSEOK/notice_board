@@ -7,7 +7,7 @@ React, Spring Boot, PostgreSQL, pgvector를 사용한 2주 개인 과제용 MVP 
 ### React, Spring Boot, PostgreSQL, pgvector를 사용해 기본 게시판 기능과 RAG 기반 AI 활용 기능을 결합한 게시판 애플리케이션.
 
 - 기본 게시판: 회원가입/로그인, 게시글 CRUD, 댓글, 태그, 페이징, 검색
-- RAG: 게시글 임베딩 저장, 유사 글 검색, 요약, 출처 링크
+- RAG: 게시글 임베딩 저장, 유사 글 검색, Ai 채팅기능
 
 ## 2. 주요 구현 기능 
 
